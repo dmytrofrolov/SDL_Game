@@ -1,0 +1,1 @@
+This is the repo where I share my SDL C++ game due to the learning this library.
