@@ -13,6 +13,16 @@
 
 class SimpleSDL{
     
+    //Key press surfaces constants
+    enum KeyPressSurfaces {
+        KEY_PRESS_SURFACE_DEFAULT,
+        KEY_PRESS_SURFACE_UP,
+        KEY_PRESS_SURFACE_DOWN,
+        KEY_PRESS_SURFACE_LEFT,
+        KEY_PRESS_SURFACE_RIGHT,
+        KEY_PRESS_SURFACE_TOTAL
+    };
+    
     const int SCREEN_WIDTH = 640;
     const int SCREEN_HEIGHT = 480;
     
@@ -22,7 +32,8 @@ public:
     ~SimpleSDL();
     void eventHandler();
     //for background image
-    bool loadMedia(char * bmpName = (char *)("hello_world.bmp"));
+    bool loadMedia(char * bmpName = (char *)("img/hello_world.bmp"));
+    SDL_Surface * loadSurface(char * bmpName = (char *)("img/hello_world.bmp"));
     
 private:
     //main window
@@ -37,6 +48,9 @@ private:
     //eventHandler vars
     bool quit = false;
     SDL_Event eventH;
+    
+     //The images that correspond to a keypress
+    SDL_Surface* keyPressSurfaces[ KEY_PRESS_SURFACE_TOTAL ];
 };
 
 
