@@ -30,6 +30,7 @@ public:
     //initialization
     SimpleSDL();
     ~SimpleSDL();
+    //key press handler
     void eventHandler();
     //for background image
     bool loadMedia(char * bmpName = (char *)("img/hello_world.bmp"));
