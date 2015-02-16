@@ -29,7 +29,6 @@ SimpleSDL::SimpleSDL(){
         success = false;
     }
     
-    //if(success==false) delete this;
 }
 
 bool SimpleSDL::loadMedia(char * bmpName){
