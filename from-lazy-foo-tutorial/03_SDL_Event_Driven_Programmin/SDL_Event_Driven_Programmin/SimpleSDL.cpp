@@ -31,6 +31,7 @@ SimpleSDL::SimpleSDL(){
     
 }
 
+//bmp name is for main image surface
 bool SimpleSDL::loadMedia(char * bmpName){
     bool success = true;
     imageSurface = SDL_LoadBMP(bmpName);
