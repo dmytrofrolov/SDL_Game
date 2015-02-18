@@ -54,11 +54,19 @@ bool SimpleSDL::loadMedia(char * bmpName){
 }
 
 SDL_Surface * SimpleSDL::loadSurface(char * bmpName){
+    //The final optimized image
+    SDL_Surface * optimizedSurface = NULL;
     SDL_Surface * tempSurface = SDL_LoadBMP(bmpName);
     if(tempSurface==NULL){
         printf( "Unable to load image %s! SDL Error: %s\n", bmpName, SDL_GetError() );
+    }else{
+        optimizedSurface = SDL_ConvertSurface(tempSurface, tempSurface->format, NULL);
+        if(optimizedSurface==NULL){
+            printf("Unable to optimize image %s! SDL Error:\n", SDL_GetError());
+        }
+        SDL_FreeSurface( tempSurface );
     }
-    return tempSurface;
+    return optimizedSurface;
 }
 
 void SimpleSDL::eventHandler(){
