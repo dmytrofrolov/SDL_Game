@@ -34,7 +34,7 @@ SimpleSDL::SimpleSDL(){
 //bmp name is for main image surface
 bool SimpleSDL::loadMedia(char * bmpName){
     bool success = true;
-    imageSurface = SDL_LoadBMP(bmpName);
+    imageSurface = loadSurface(bmpName);
     if(imageSurface==NULL) {
         success = false;
         printf("Error in image loading! SDL_Error: %s\n", SDL_GetError());
@@ -66,6 +66,13 @@ SDL_Surface * SimpleSDL::loadSurface(char * bmpName){
         }
         SDL_FreeSurface( tempSurface );
     }
+    //Apply the image stretched
+    SDL_Rect stretchRect;
+    stretchRect.x = 0;
+    stretchRect.y = 0;
+    stretchRect.w = SCREEN_WIDTH;
+    stretchRect.h = SCREEN_HEIGHT;
+    SDL_BlitScaled( optimizedSurface, NULL, optimizedSurface, &stretchRect );
     return optimizedSurface;
 }
 

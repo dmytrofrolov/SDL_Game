@@ -23,8 +23,8 @@ class SimpleSDL{
         KEY_PRESS_SURFACE_TOTAL
     };
     
-    const int SCREEN_WIDTH = 640;
-    const int SCREEN_HEIGHT = 480;
+    const int SCREEN_WIDTH = 690;
+    const int SCREEN_HEIGHT = 490;
     
 public:
     //initialization
