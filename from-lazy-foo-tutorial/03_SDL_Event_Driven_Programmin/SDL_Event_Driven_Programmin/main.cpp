@@ -13,7 +13,7 @@
 
 
 int main(int argc, const char * argv[]) {
-    system("pwd");
+    system("pwd"); //print the current folder path
     
     SimpleSDL game;
     game.loadMedia();
