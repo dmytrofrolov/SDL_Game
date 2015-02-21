@@ -9,6 +9,7 @@
 #include <stdio.h>
 #include "SimpleSDL.h"
 #include <SDL2/SDL.h>
+#include <SDL2_image/SDL_image.h>
 
 SimpleSDL::SimpleSDL(){
     //is initializing success
@@ -43,7 +44,7 @@ bool SimpleSDL::loadMedia(char * bmpName){
         SDL_UpdateWindowSurface( mainWindow );
     }
     
-    keyPressSurfaces[KEY_PRESS_SURFACE_DEFAULT] = loadSurface((char * )("img/key_press.bmp"));
+    keyPressSurfaces[KEY_PRESS_SURFACE_DEFAULT] = IMG_Load((char * )("img/loaded.png"));
     keyPressSurfaces[KEY_PRESS_SURFACE_UP] = loadSurface((char * )("img/key_up.bmp"));
     keyPressSurfaces[KEY_PRESS_SURFACE_DOWN] = loadSurface((char * )("img/key_down.bmp"));
     keyPressSurfaces[KEY_PRESS_SURFACE_LEFT] = loadSurface((char * )("img/key_left.bmp"));
