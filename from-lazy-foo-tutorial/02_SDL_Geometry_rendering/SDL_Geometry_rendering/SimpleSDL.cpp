@@ -63,46 +63,34 @@ SimpleSDL::SimpleSDL(){
 //bmp name is for main image surface
 bool SimpleSDL::loadMedia(char * bmpName){
     bool success = true;
-    imageSurface = loadSurface(bmpName);
-    if(imageSurface==NULL) {
+    mainTexture = loadTexture(bmpName);
+    if(mainTexture==NULL) {
         success = false;
         printf("Error in image loading! SDL_Error: %s\n", SDL_GetError());
-    }else{
-        SDL_BlitSurface( imageSurface, NULL, mainSurface, NULL );
-        SDL_UpdateWindowSurface( mainWindow );
     }
     
-    keyPressSurfaces[KEY_PRESS_SURFACE_DEFAULT] = IMG_Load((char * )("img/loaded.png"));
-    keyPressSurfaces[KEY_PRESS_SURFACE_UP] = loadSurface((char * )("img/key_up.bmp"));
-    keyPressSurfaces[KEY_PRESS_SURFACE_DOWN] = loadSurface((char * )("img/key_down.bmp"));
-    keyPressSurfaces[KEY_PRESS_SURFACE_LEFT] = loadSurface((char * )("img/key_left.bmp"));
-    keyPressSurfaces[KEY_PRESS_SURFACE_RIGHT] = loadSurface((char * )("img/key_right.bmp"));
+    keyPressSurfaces[KEY_PRESS_SURFACE_DEFAULT] = loadTexture((char * )("img/key_up.bmp"));
+    keyPressSurfaces[KEY_PRESS_SURFACE_UP] = loadTexture((char * )("img/key_up.bmp"));
+    keyPressSurfaces[KEY_PRESS_SURFACE_DOWN] = loadTexture((char * )("img/key_down.bmp"));
+    keyPressSurfaces[KEY_PRESS_SURFACE_LEFT] = loadTexture((char * )("img/key_left.bmp"));
+    keyPressSurfaces[KEY_PRESS_SURFACE_RIGHT] = loadTexture((char * )("img/key_right.bmp"));
 
     
     return success;
 }
 
-SDL_Surface * SimpleSDL::loadSurface(char * bmpName){
-    //The final optimized image
-    SDL_Surface * optimizedSurface = NULL;
-    SDL_Surface * tempSurface = SDL_LoadBMP(bmpName);
-    if(tempSurface==NULL){
-        printf( "Unable to load image %s! SDL Error: %s\n", bmpName, SDL_GetError() );
-    }else{
-        optimizedSurface = SDL_ConvertSurface(tempSurface, tempSurface->format, NULL);
-        if(optimizedSurface==NULL){
-            printf("Unable to optimize image %s! SDL Error:\n", SDL_GetError());
-        }
-        SDL_FreeSurface( tempSurface );
+SDL_Texture * SimpleSDL::loadTexture(char * imgPath){
+    //Loading success flag
+    bool success = true;
+    SDL_Texture * tempTexture = NULL;
+    //Load PNG texture
+    tempTexture = loadTexture( "texture.png" );
+    if( tempTexture == NULL )
+    {
+        printf( "Failed to load texture image!\n" );
+        success = false;
     }
-    //Apply the image stretched
-    SDL_Rect stretchRect;
-    stretchRect.x = 0;
-    stretchRect.y = 0;
-    stretchRect.w = SCREEN_WIDTH;
-    stretchRect.h = SCREEN_HEIGHT;
-    SDL_BlitScaled( optimizedSurface, NULL, optimizedSurface, &stretchRect );
-    return optimizedSurface;
+    return tempTexture;
 }
 
 void SimpleSDL::eventHandler(){

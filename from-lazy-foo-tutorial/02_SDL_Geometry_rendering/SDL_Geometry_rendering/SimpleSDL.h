@@ -35,8 +35,6 @@ public:
     //for background image
     bool loadMedia(char * bmpName = (char *)("img/hello_world.bmp"));
     
-    SDL_Surface * loadSurface(char * bmpName = (char *)("img/hello_world.bmp"));
-    
     SDL_Texture * loadTexture(char * imgPath = (char *)("img/hello_world.bmp"));
 
 
@@ -60,8 +58,8 @@ private:
     bool quit = false;
     SDL_Event eventH;
     
-     //The images that correspond to a keypress
-    SDL_Surface* keyPressSurfaces[ KEY_PRESS_SURFACE_TOTAL ];
+    //The textures that correspond to a keypress
+    SDL_Texture* keyPressSurfaces[ KEY_PRESS_SURFACE_TOTAL ];
 };
 
 

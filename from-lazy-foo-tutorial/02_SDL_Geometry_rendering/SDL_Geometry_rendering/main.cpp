@@ -12,7 +12,10 @@
 
 
 int main(int argc, const char * argv[]) {
+    //find path to executable file
+    system("pwd");
     
+    //create new game
     SimpleSDL * theGame = new SimpleSDL;
     theGame->loadMedia();
     theGame->eventHandler();
