@@ -49,8 +49,7 @@ SimpleSDL::SimpleSDL(){
                 }
             }
             
-            
-            //mainSurface = SDL_GetWindowSurface(mainWindow);
+        
         }
         
     }else{
