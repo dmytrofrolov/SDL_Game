@@ -17,6 +17,8 @@ int main(int argc, const char * argv[]) {
     
     //create new game
     SimpleSDL * theGame = new SimpleSDL;
+
+    //Load all images
     theGame->loadMedia();
     theGame->eventHandler();
     delete theGame;

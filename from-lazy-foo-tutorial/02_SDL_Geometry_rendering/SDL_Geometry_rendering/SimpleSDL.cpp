@@ -68,6 +68,7 @@ bool SimpleSDL::loadMedia(char * bmpName){
         printf("Error in image loading! SDL_Error: %s\n", SDL_GetError());
     }
     
+    //different images for different keys
     keyPressSurfaces[KEY_PRESS_SURFACE_DEFAULT] = loadTexture((char * )("img/key_up.bmp"));
     keyPressSurfaces[KEY_PRESS_SURFACE_UP] = loadTexture((char * )("img/key_up.bmp"));
     keyPressSurfaces[KEY_PRESS_SURFACE_DOWN] = loadTexture((char * )("img/key_down.bmp"));
